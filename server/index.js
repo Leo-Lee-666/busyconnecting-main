@@ -16,14 +16,16 @@ const allowedOrigins = ['http://localhost:3000', 'https://busyconnecting-main-pr
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // Postman과 같은 도구를 허용
-    if (allowedOrigins.includes(origin)) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
-  }
+  },
+  credentials: true // 쿠키를 허용하는 경우 추가
 }));
+
+app.options('*', cors()); // Preflight 요청 처리
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
