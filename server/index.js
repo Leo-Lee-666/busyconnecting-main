@@ -11,14 +11,25 @@ const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const port = 3001;
 
-// Middleware setup
-app.use(cors({ origin: 'http://localhost:3000' }));
+// CORS 설정: 여러 도메인을 허용
+const allowedOrigins = ['http://localhost:3000', 'https://busyconnecting-main-production.up.railway.app'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // Postman과 같은 도구를 허용
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
 // Admin 라우트 설정
-app.use('/api/admin', adminRoutes);  // 반드시 추가
-
+app.use('/api/admin', adminRoutes);
 
 // Routes
 app.use('/api/blogPage', require('./routes/blogRoutes'));
