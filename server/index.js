@@ -11,21 +11,10 @@ const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const port = 3001;
 
-// CORS 설정: 여러 도메인을 허용
-const allowedOrigins = ['http://localhost:3000', 'https://busyconnecting-main-production.up.railway.app'];
+// CORS 설정: 모든 도메인 허용
+app.use(cors());  // 모든 도메인에서의 요청 허용
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true // 쿠키를 허용하는 경우 추가
-}));
-
-app.options('*', cors()); // Preflight 요청 처리
+app.options('*', cors()); // Preflight 요청도 모든 도메인 허용
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
