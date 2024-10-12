@@ -9,16 +9,17 @@ require('dotenv').config();  // .env 파일의 설정을 불러옵니다
 const adminRoutes = require('./routes/adminRoutes'); 
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;  // Railway에서 제공하는 PORT 사용
 
 // Middleware setup
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({
+  origin: process.env.CLIENT_URL || 'http://localhost:3000',  // 클라이언트 URL을 환경 변수로 설정 (Railway의 URL과 호환)
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
 // Admin 라우트 설정
 app.use('/api/admin', adminRoutes);  // 반드시 추가
-
 
 // Routes
 app.use('/api/blogPage', require('./routes/blogRoutes'));
@@ -35,5 +36,5 @@ app.get('*', (req, res) => {
 
 // Start server
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on port ${port}`);
 });
