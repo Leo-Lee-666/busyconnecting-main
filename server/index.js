@@ -13,8 +13,11 @@ const port = process.env.PORT || 3001;  // Railway에서 제공하는 PORT 사�
 
 // Middleware setup
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',  // 클라이언트 URL을 환경 변수로 설정 (Railway의 URL과 호환)
+  origin: process.env.CLIENT_URL || 'https://busyconnecting-main-production.up.railway.app',  // Railway의 클라이언트 URL을 설정
+  credentials: true,  // 쿠키 및 인증 관련 설정
+  methods: ['GET', 'POST', 'PUT', 'DELETE']  // 필요한 메서드 허용
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
