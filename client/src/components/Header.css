@@ -1,0 +1,201 @@
+/* 기본 스타일 */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: #1E1E1E;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #FFF502;
+    font-family: "Poppins";
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #FFF502;
+    font-family: "Poppins SemiBold";
+    font-size: 18px;
+}
+
+.contact-btn {
+    padding: 10px 20px;
+    background-color: #DB0F45;
+    color: white;
+    border: 3px solid black;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: "Poppins SemiBold";
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #BF0E3B;
+    color: white;
+}
+
+/* 드롭다운 스타일 */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #1E1E1E;
+    border-radius: 10px;
+    top: 100%;
+    left: 0;
+    padding: 10px 0;
+    min-width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: #FFF502;
+    font-family: "Poppins SemiBold";
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #333;
+    border-radius: 5px;
+}
+
+/* 데스크톱에서 드롭다운 표시 */
+.nav-menu li:hover .dropdown-menu {
+    display: block;
+}
+
+/* 반응형 스타일 */
+
+/* 태블릿 및 모바일 */
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    /* 기본적으로 nav-toggle 버튼 숨김 */
+    .nav-toggle {
+        display: block;
+        font-size: 24px;
+        color: #FFF502;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: 30px;
+    }
+
+    /* 모바일에서 nav 메뉴는 기본적으로 숨김 */
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #1E1E1E;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    /* 모바일에서 nav 메뉴가 열리면 표시 */
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-menu li a {
+        padding: 15px 20px;
+        font-size: 18px;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .dropdown-menu li a {
+        padding-left: 40px;
+        font-size: 16px;
+    }
+
+    .contact-btn {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 모바일에서만 contact-btn도 네비게이션 메뉴에 포함 */
+    .mobile-only {
+        display: block;
+    }
+}
+
+/* 모바일 기기 */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-toggle {
+        font-size: 22px;
+    }
+
+    .nav-menu li a {
+        font-size: 16px;
+    }
+
+    .dropdown-menu li a {
+        font-size: 14px;
+    }
+
+    .contact-btn {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* 데스크탑에서는 contact-btn만 따로 표시 */
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none; /* 데스크탑에서 nav-toggle 버튼 숨김 */
+    }
+
+    .mobile-only {
+        display: none; /* 데스크탑에서는 mobile-only 버튼 숨김 */
+    }
+}

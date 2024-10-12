@@ -1,0 +1,92 @@
+.yellow-box {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 카드 내용을 중앙 정렬 */
+    flex-direction: row; /* 기본적으로 수평 배치 */
+    width: 90%;
+    max-width: 1000px; /* 카드의 최대 너비 제한 */
+    background-color: #FFF502;
+    border: 3px solid #000;
+    border-radius: 30px;
+    padding: 20px;
+    margin: 20px auto; /* 카드 자체를 중앙에 정렬 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 살짝 그림자 */
+}
+
+.yellow-box img {
+    width: 30%; /* 이미지 크기를 적절히 줄여 화면에 맞게 */
+    max-width: 200px; /* 최대 이미지 크기 제한 */
+    height: auto; /* 이미지 비율 유지 */
+    margin-right: 20px; /* 텍스트와 이미지 사이 여백 */
+    border-radius: 10px; /* 이미지 모서리를 약간 둥글게 */
+}
+
+.yellow-box-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.yellow-box h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.yellow-box p {
+    font-family: "Poppins Medium", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 태블릿 대응 */
+@media (max-width: 768px) {
+    .yellow-box {
+        flex-direction: column; /* 세로로 배치 */
+        padding: 20px;
+        margin: 20px auto;
+        text-align: center; /* 텍스트 중앙 정렬 */
+    }
+
+    .yellow-box img {
+        width: 60%; /* 태블릿에서 이미지 크기 조정 */
+        margin: 0 auto 20px auto; /* 이미지를 중앙으로 정렬 */
+    }
+
+    .yellow-box h2 {
+        font-size: 22px; /* 텍스트 크기 조정 */
+    }
+
+    .yellow-box p {
+        font-size: 15px;
+    }
+}
+
+/* 모바일 대응 */
+@media (max-width: 480px) {
+    .yellow-box {
+        width: 95%; /* 모바일 화면에 맞게 너비 조정 */
+        max-width: 350px; /* 최대 너비 설정으로 너무 크지 않도록 */
+        padding: 15px;
+        margin: 10px auto; /* 중앙 정렬 */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .yellow-box img {
+        width: 80%; /* 모바일에서 이미지 크기를 줄임 */
+        margin-bottom: 15px;
+    }
+
+    .yellow-box h2 {
+        font-size: 20px;
+    }
+
+    .yellow-box p {
+        font-size: 14px;
+    }
+}

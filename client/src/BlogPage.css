@@ -1,0 +1,92 @@
+*{
+    font-family: Poppins;
+}
+
+.blog-container {
+    display: grid;
+    width: 60%;
+    margin: 0 auto; /* Centers the container horizontally */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 30px;
+    text-align: left;
+    border: 3px solid #000;
+    border-radius: 10px;
+    margin-top: 20px;
+    background-color: #FFF502;
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers items horizontally */
+}
+
+.title{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-family: "Poppins Medium";
+    font-weight: bolder;
+    color: #FFF502;
+}
+
+.blog-post {
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a smooth shadow for a more elegant look */
+    background-color: #FFF502;
+    padding: 20px; /* Adds padding to create space inside the blog post */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adds transition for hover effect */
+}
+
+.blog-post:hover {
+    transform: translateY(-10px); /* Moves the blog post up on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhances shadow on hover for emphasis */
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.txt{
+    margin-bottom: -10px;
+    color: #FFF502;
+}
+
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+    .blog-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        padding: 20px;
+        margin: 0 auto; /* Centers the container horizontally */
+        align-items: center; /* Centers items vertically */
+        justify-content: center; /* Centers items horizontally */
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .button-container {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+
+/* Responsive for Phones */
+@media (max-width: 480px) {
+    .blog-container {
+        grid-template-columns: 1fr;
+        padding-left: 15px;
+        margin: 0 auto; /* Centers the container horizontally */
+        align-items: center; /* Centers items vertically */
+        justify-content: center; /* Centers items horizontally */
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .button-container {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
