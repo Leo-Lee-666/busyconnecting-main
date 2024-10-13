@@ -8,20 +8,21 @@ function EditBlogPage() {
     const [content1, setContent1] = useState('');
     const [content2, setContent2] = useState('');
     const [image, setImage] = useState(null);
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
 
     useEffect(() => {
         fetchBlogs();
     }, []);
 
     const fetchBlogs = () => {
-        fetch('/api/blogPage/getAllBlog')
+        fetch(`${apiUrl}/api/blogPage/getAllBlog`)
             .then(response => response.json())
             .then(data => setBlogs(data))
             .catch(error => console.error('Error fetching blogs:', error));
     };
 
     const handleEditBlog = (id) => {
-        fetch(`http://localhost:3001/api/blogPage/${id}`)
+        fetch(`${apiUrl}/api/blogPage/${id}`)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json();
@@ -47,7 +48,7 @@ function EditBlogPage() {
             blogData.append('Image', image);
         }
 
-        fetch(`/api/blogPage/${selectedBlogId}`, {
+        fetch(`${apiUrl}/api/blogPage/${selectedBlogId}`, {
             method: 'PUT',
             body: blogData,
         })
@@ -61,7 +62,7 @@ function EditBlogPage() {
     };
 
     const handleDeleteBlog = (id) => {
-        fetch(`/api/blogPage/${id}`, {
+        fetch(`${apiUrl}/api/blogPage/${id}`, {
             method: 'DELETE',
         })
             .then(response => response.json())

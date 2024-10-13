@@ -6,6 +6,7 @@ function CreateBlogPage() {
     const [content1, setContent1] = useState('');
     const [content2, setContent2] = useState('');
     const [image, setImage] = useState(null);
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
 
     const handleBlogSubmit = (e) => {
         e.preventDefault();
@@ -18,7 +19,7 @@ function CreateBlogPage() {
             blogData.append('Image', image);
         }
 
-        fetch('/api/blogPage/addNewBlog', {
+        fetch(`${apiUrl}/api/blogPage/addNewBlog`, {
             method: 'POST',
             body: blogData,
         })

@@ -9,14 +9,16 @@ function UserDataPage() {
     const [users, setUsers] = useState([]);
     const [categories, setCategories] = useState([]);
     const [editUserId, setEditUserId] = useState(null);
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
+
 
     useEffect(() => {
-        fetch('/api/userData/getAllUsers')
+        fetch(`${apiUrl}/api/userData/getAllUsers`)
             .then(response => response.json())
             .then(data => setUsers(data))
             .catch(error => console.error('Error fetching users:', error));
 
-        fetch('/api/userData/getCategories')
+        fetch(`${apiUrl}/api/userData/getCategories`)
             .then(response => response.json())
             .then(data => setCategories(data))
             .catch(error => console.error('Error fetching categories:', error));
@@ -33,7 +35,7 @@ function UserDataPage() {
             DateOfJoining: dateOfJoining,
         };
 
-        const url = editUserId ? `/api/userData/${editUserId}` : '/api/userData/addNewUser';
+        const url = editUserId ? `${apiUrl}/api/userData/${editUserId}` : `${apiUrl}/api/userData/addNewUser`;
         const method = editUserId ? 'PUT' : 'POST';
 
         fetch(url, {
@@ -58,7 +60,7 @@ function UserDataPage() {
     };
 
     const fetchUsers = () => {
-        fetch('/api/userData/getAllUsers')
+        fetch(`${apiUrl}/api/userData/getAllUsers`)
             .then(response => response.json())
             .then(data => setUsers(data))
             .catch(error => console.error('Error fetching users:', error));
@@ -74,7 +76,7 @@ function UserDataPage() {
     };
 
     const handleDelete = (id) => {
-        fetch(`/api/userData/${id}`, {
+        fetch(`${apiUrl}/api/userData/${id}`, {
             method: 'DELETE',
         })
             .then(response => response.json())

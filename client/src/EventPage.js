@@ -10,9 +10,11 @@ import Footer from "./Footer";
 
 function EventPage() {
     const [events, setEvents] = useState([]);
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
+
 
     useEffect(() => {
-        fetch('/api/eventpage')
+        fetch(`${apiUrl}/api/eventpage`)
             .then(response => response.json())
             .then(data => {
                 setEvents(data.data); // Assuming your API returns data as { "data": rows }

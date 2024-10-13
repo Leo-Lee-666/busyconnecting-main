@@ -7,8 +7,10 @@ function AvailableBlogs() {
     const [blogs, setBlogs] = useState([]);
     const navigate = useNavigate(); // Initialize useNavigate
 
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
+
     useEffect(() => {
-        fetch('/api/blogPage/latestBlogs')
+        fetch(`${apiUrl}/api/blogPage/latestBlogs`)
             .then(response => response.json())
             .then(data => {
                 if (Array.isArray(data)) {

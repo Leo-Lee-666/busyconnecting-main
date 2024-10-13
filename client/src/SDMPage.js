@@ -10,6 +10,8 @@ import ContentBox from "./components/ContentBox";
 import defaultImage from "./assets/images/SitReadingDoodle.svg"; // Fallback image
 
 function SDMPage() {
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
+
     const [strategicData, setStrategicData] = useState({
         title: '',
         subtitle: '',
@@ -24,7 +26,7 @@ function SDMPage() {
     });
 
     useEffect(() => {
-        fetch('/api/infoPage/StrategicPage')
+        fetch(`${apiUrl}/api/infoPage/StrategicPage`)
             .then(response => response.json())
             .then(data => {
                 // Convert Base64 image data to data URLs

@@ -10,9 +10,11 @@ function HeroSection() {
         videoUrl: ''
     });
 
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
+
     // Fetch data from the API when the component mounts
     useEffect(() => {
-        fetch('/api/homepage')
+        fetch(`${apiUrl}/api/homepage`)
             .then((response) => response.json())
             .then((data) => {
                 if (data && data.HeaderTitle) {

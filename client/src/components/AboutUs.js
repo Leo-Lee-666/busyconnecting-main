@@ -6,9 +6,10 @@ function AboutUs() {
         content: '',
         founderImageUrl: ''
     });
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
 
     useEffect(() => {
-        fetch('/api/homepage')
+        fetch(`${apiUrl}/api/homepage`)
             .then((response) => response.json())
             .then((data) => {
                 if (data && data.SecondContent) {

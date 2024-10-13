@@ -12,8 +12,10 @@ function Newsletter() {
         e.preventDefault();
         const data = { firstName, lastName, email };
 
+        const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
+
         try {
-            const response = await fetch('http://localhost:3001/api/newsletter/subscribe', {
+            const response = await fetch(`${apiUrl}/api/newsletter/subscribe`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

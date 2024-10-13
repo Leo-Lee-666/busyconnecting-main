@@ -12,9 +12,10 @@ function EditInfoPage() {
     const [infoImage1, setInfoImage1] = useState(null);
     const [infoImage2, setInfoImage2] = useState(null);
     const [infoImage3, setInfoImage3] = useState(null);
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
 
     useEffect(() => {
-        fetch(`/api/infoPage/${infoPage}`)
+        fetch(`${apiUrl}/api/infoPage/${infoPage}`)
             .then(response => response.json())
             .then(data => {
                 if (data) {
@@ -59,7 +60,7 @@ function EditInfoPage() {
             infoPageData.append('image2', infoImage2);
         }
 
-        fetch(`/api/infoPage/${infoPage}`, {
+        fetch(`${apiUrl}/api/infoPage/${infoPage}`, {
             method: 'PUT',
             body: infoPageData,
         })

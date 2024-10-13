@@ -9,9 +9,10 @@ import "./BlogDetail.css";
 function BlogDetail() {
     const { id } = useParams();
     const [blog, setBlog] = useState(null);
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
 
     useEffect(() => {
-        fetch(`/api/blogPage/${id}`)
+        fetch(`${apiUrl}/api/blogPage/${id}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

@@ -7,9 +7,10 @@ function HomePageEdit() {
     const [secondContent, setSecondContent] = useState('');
     const [videoUrl, setVideoUrl] = useState('');
     const [image, setImage] = useState(null);
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
 
     useEffect(() => {
-        fetch('/api/homepage')
+        fetch(`${apiUrl}/api/homepage`)
             .then(response => response.json())
             .then(data => {
                 setHeaderTitle(data.HeaderTitle);
@@ -35,7 +36,7 @@ function HomePageEdit() {
             homePageData.append('Image', image);
         }
 
-        fetch('http://localhost:3001/api/homepage', {
+        fetch(`${apiUrl}/api/homepage`, {
             method: 'PUT',
             body: homePageData,
         })

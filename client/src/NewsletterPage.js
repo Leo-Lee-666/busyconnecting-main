@@ -10,9 +10,11 @@ const NewsletterPage = () => {
         subject: '',
         html: '',
     });
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
+
 
     useEffect(() => {
-        fetch('/api/newsletter/categories')
+        fetch(`${apiUrl}/api/newsletter/categories`)
             .then(response => response.json())
             .then(data => {
                 const categories = data.data.map(category => ({
@@ -22,7 +24,7 @@ const NewsletterPage = () => {
                 }));
                 setOptions(categories);
 
-                fetch('/api/newsletter/users/by-category')
+                fetch(`${apiUrl}/api/newsletter/users/by-category`)
                     .then(response => response.json())
                     .then(data => {
                         const usersByCategory = data.data;
@@ -78,7 +80,7 @@ const NewsletterPage = () => {
             recipients: selectedUsers,
         };
 
-        fetch('/api/newsletter/send-newsletter', {
+        fetch(`${apiUrl}/api/newsletter/send-newsletter`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

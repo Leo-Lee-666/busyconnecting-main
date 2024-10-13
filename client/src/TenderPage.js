@@ -13,6 +13,8 @@ import providerIMG2 from './assets/images/nia.png';
 import Provider from "./Provider";
 
 function TenderPage() {
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
+
     const [tenderData, setTenderData] = useState({
         title: '',
         subtitle: '',
@@ -24,7 +26,7 @@ function TenderPage() {
     });
 
     useEffect(() => {
-        fetch('/api/infoPage/TendersPage')
+        fetch(`${apiUrl}/api/infoPage/TendersPage`)
             .then(response => response.json())
             .then(data => {
                 // Convert Base64 image data to data URLs

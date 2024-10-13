@@ -13,9 +13,10 @@ function BlogPage() {
     const [blogs, setBlogs] = useState([]);
     const [filteredBlogs, setFilteredBlogs] = useState([]);
     const navigate = useNavigate();
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
 
     useEffect(() => {
-        fetch('/api/blogPage/getAllBlog')
+        fetch(`${apiUrl}/api/blogPage/getAllBlog`)
             .then(response => response.json())
             .then(data => {
                 if (Array.isArray(data) && data.length) {

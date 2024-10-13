@@ -22,9 +22,10 @@ function GrantPage() {
         image1: defaultImage, // Default fallback image
         image2: defaultImage  // Default fallback image
     });
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
 
     useEffect(() => {
-        fetch('/api/infoPage/BusinessFundingPage')
+        fetch(`${apiUrl}/api/infoPage/BusinessFundingPage`)
             .then(response => response.json())
             .then(data => {
                 // Convert Base64 image data to data URLs

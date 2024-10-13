@@ -9,11 +9,13 @@ function SignupPage() {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/api/admin/signup', {
+      const response = await fetch(`${apiUrl}/api/admin/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

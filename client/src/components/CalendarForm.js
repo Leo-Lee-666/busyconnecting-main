@@ -16,6 +16,8 @@ function CalendarForm() {
     const [step, setStep] = useState(1); // Step 1 is calendar, Step 2 is time selection, Step 3 is form
     const [disabledSlots, setDisabledSlots] = useState([]);
 
+    const apiUrl = 'https://busyconnecting-main-production-02a1.up.railway.app';
+
     const timeSlots = {
         morning: ['9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM'],
         afternoon: ['1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM']
@@ -49,8 +51,9 @@ function CalendarForm() {
         };
 
         console.log('Submitting data:', appointmentData); // Verify date format
+ 
 
-        fetch('/api/meeting/book', {
+        fetch(`${apiUrl}/api/meeting/book`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -96,7 +99,7 @@ function CalendarForm() {
     };
 
     const checkAvailability = async (date, time) => {
-        const response = await fetch(`/api/meeting/checKAvailability?date=${date}&startTime=${time}`);
+        const response = await fetch(`${apiUrl}/api/meeting/checKAvailability?date=${date}&startTime=${time}`);
         const data = await response.json();
         return data.available;
     };
